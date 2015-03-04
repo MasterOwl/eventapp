@@ -1,0 +1,116 @@
+extends layout
+
+block content
+    #list.page
+        // Events LIST
+        h1 This is the list of all saved events
+        #eventsList
+            table
+                thead
+                    th EventName
+                    th Date
+                    th Delete?
+                tbody
+        // /Events LIST
+
+    #event.page
+
+    #places.page
+        h1 All events on the Google map
+        #places-map
+
+    script(id="event-tmp" type="text/template").
+        <h1>Fill in the event details!</h1>
+            <div id='eventMainParams'>
+                <section class="name">
+                    <input type="hidden" id="evtid" name="evtid" value="<%= _id %>">
+                    <label for="evtname">Event Name:</label>
+                    <input type="text" id="evtname" name="Event Name" value="<%= name %>">
+                    <span class="error"></span>
+                </section>
+                <section class="date">
+                    <label for="date">Event Date:</label>
+                    <input type="text" id="evtdate" name="Date" value="<%= date %>">
+                    <span class="error"></span>
+                </section>
+            </div>
+            <div id="eventSecondaryParams">
+                <div id="descriptionHolder">
+                    <label>Event description:</label><br>
+                    <textarea id="msg-txt" placeholder="Remember, be nice!" style="<%= typeof(style)!== 'undefined' ?  style : '' %>"><%= typeof(description)!== 'undefined' ?  description : '' %></textarea>
+                </div>
+                <div id="editpaneHolder">
+                    <label>Editing panel:</label><br>
+                    <div id="editpane">
+                        <div id="checkboxpane">
+                            <input type="checkbox" value="italic" id="check1"><label for="check1">Italic</label>
+                            <input type="checkbox" value="bold" id="check2"><label for="check2">Bold</label>
+                            <input type="checkbox" value="underline" id="check3"><label for="check3">Underline</label>
+                        </div>
+                        <div id="colorpicker">
+                            <button id="colorpickerbutton">Select color</button>
+                            <div id="wrapper" style="display: none;">
+                                <input type="radio" name="color" id="rad1" value="black" checked="true"><label for="rad1">Black</label><br>
+                                <input type="radio" name="color" id="rad2" value="green"><label for="rad2">Green</label><br>
+                                <input type="radio" name="color" id="rad3" value="red"><label for="rad3">Red</label><br>
+                                <input type="radio" name="color" id="rad4" value="blue"><label for="rad4">Blue</label>
+                            </div>
+                        </div>
+                       <div id="fontsize">
+                            <select id="fsize">
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                                <option value="30">30</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="eventThirdParams">
+                <div class="obertka">
+                    <div id="mapholder">
+                        <label>Drag marker to the event's place:</label>
+                        <div id="map_canvas">
+                        </div>
+                    </div>
+                    <div id="attitude">
+                        <label>Your attitude towards the event:</label>
+                        <div id="relation">
+                            <%=
+                                ["nightmare", "negative", "positive", "awesome"].map(function(value, index) {
+                                    return '<input type="radio" name="relation" id="rel'+index+'" value="'+ value +'" ' + (relation == value ? 'checked="true"' : '') + '><label for="rel'+index+'">'+ value +'</label>'
+                                })
+                            %>
+                        </div>
+                    </div>
+                </div>
+                <div id="youtubeVidHolder">
+                    <label for="video">YouTube link:</label><br>  
+                    <input type="text" id="video" name="video" size="40" value="<%= typeof(video)!== 'undefined' ?  video : '' %>">
+                    <span class="error"></span>
+                    <br>
+                    <div id="videoframe">
+                         <%
+                            if(video) {
+                                var pattern = /v=(.{11})/g;
+                                var videoid = pattern.exec(video)[1];
+                                print('<iframe width="480" height="300" src="https://www.youtube.com/embed/'+videoid+'" frameborder="0" allowfullscreen></iframe>');
+                            }
+                          %>
+                    </div>
+                    <div id="exampleLinks">
+                        <label>Example links:</label>
+                        <p>https://www.youtube.com/watch?v=A07zSr-JYFE</p><br>
+                        <p>https://www.youtube.com/watch?v=wx2nuge9v0o</p><br>
+                        <p>https://www.youtube.com/watch?v=m1Mub8DwLPQ</p><br>
+                    </div>
+                </div>
+            </div>
+            <div id="eventFourthParams">
+                <div id="actionbuttons">
+                    <button id="submit">Publish event</button>
+                </div>
+            </div>
+            
