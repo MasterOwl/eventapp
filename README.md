@@ -3,8 +3,8 @@ Simple event managing application.
 ![eventapp screenshot](/eventapp_screen.jpg?raw=true "Main view")
 # Installing EventApp on Ubuntu:
 ## 1) Install NodeJs:
-sudo apt-get update
-sudo apt-get install nodejs
+⋅⋅* sudo apt-get update
+⋅⋅* sudo apt-get install nodejs
 node --version
 ## 2) Install NPM:
 sudo apt-get install npm
