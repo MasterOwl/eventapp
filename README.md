@@ -7,18 +7,15 @@ Simple event managing application.
 
     sudo apt-get update
     sudo apt-get install nodejs
-    node --version
-
+ 
 ## 2. Install NPM
 
     sudo apt-get install npm
-    npm --version
-    
+
 ## 3. Install Express
 
     sudo npm install express --save
-    sudo npm list express
-    
+
 ## 4. Install MondoDB
 
     sudo apt-get install -y mongodb-org
