@@ -21,10 +21,10 @@ Simple event managing application.
     sudo apt-get install -y mongodb-org
     (или, если не прокатит выше: sudo apt-get install mongodb)
     
-## 5. Запустить MongoDB
+## 5. Start MongoDB
 
-    (на разных версиях Ubuntu по-разному)
+    (may vary on your Ubuntu version. Just google it )
     
-## 6. зайти в папку приложения и запустить Node 
+## 6. Navigate to the application folder and start Node 
 
     npm start 
