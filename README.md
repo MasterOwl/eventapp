@@ -19,7 +19,7 @@ Simple event managing application.
 ## 4. Install MondoDB
 
     sudo apt-get install -y mongodb-org
-    (или, если не прокатит выше: sudo apt-get install mongodb)
+    (or, if above doesn't work: sudo apt-get install mongodb)
     
 ## 5. Start MongoDB
 
