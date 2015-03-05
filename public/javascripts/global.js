@@ -199,7 +199,6 @@ function publishEvent(id) {
         style: $("#msg-txt").getCurrentStyle()
     }
     var url = id ? 'events/updatevent/' + id : 'events/addevent';
-    console.log(url);
     // Use AJAX to post the object to our addevent service
    $.ajax({
         type: 'POST',
@@ -207,7 +206,6 @@ function publishEvent(id) {
         url: url,
         dataType: 'JSON'
     }).done(function( response ) {
-        console.log('done');
         // Check for successful (blank) response
         if (response.msg === '') {
             // Clear the form inputs
